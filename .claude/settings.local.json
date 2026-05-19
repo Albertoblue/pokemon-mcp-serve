@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//mnt/e/Users/1151528/Documents/ncpDemo/**)",
+      "Bash(sed -n '725,735p' index.html)",
+      "Bash(sed -n '1700,1710p' index.html)",
+      "Bash(cp /mnt/e/Users/1151528/Documents/mcp-example/Arquitectura.png /mnt/e/Users/1151528/Documents/ncpDemo/Arquitectura.png)",
+      "Bash(cp /mnt/e/Users/1151528/Documents/mcp-example/telegram.png /mnt/e/Users/1151528/Documents/ncpDemo/telegram.png)",
+      "Bash(cp /mnt/e/Users/1151528/Documents/ncpDemo/index.html /mnt/e/Users/1151528/Documents/ncpDemo/index.html.bak)"
+    ]
+  }
+}
