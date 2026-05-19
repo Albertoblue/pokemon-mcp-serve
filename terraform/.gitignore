@@ -1,0 +1,9 @@
+.terraform/
+# .terraform.lock.hcl SÍ se commitea (fija versiones de proveedores)
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+override.tf
+override.tf.json

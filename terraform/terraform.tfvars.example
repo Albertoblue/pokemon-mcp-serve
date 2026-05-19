@@ -1,0 +1,12 @@
+# Copia a terraform.tfvars y ajusta.
+region        = "us-east-1"
+project_name  = "pokemon-mcp-server"
+image_tag     = "latest"
+desired_count = 1
+
+# Deja vacío para generar una clave aleatoria fuerte (recomendado),
+# o fija la tuya:
+# mcp_api_key = "una-clave-muy-fuerte"
+
+# En producción restringe quién llega al ALB:
+# allowed_cidr = "201.x.x.x/32"
