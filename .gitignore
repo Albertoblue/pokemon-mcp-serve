@@ -1,4 +1,41 @@
+# ── Node / TypeScript ─────────────────────────────────────
 node_modules/
 dist/
-.env
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 *.log
+
+# ── Variables de entorno (NO subir secretos) ──────────────
+.env
+.env.*
+!.env.example
+
+# ── Terraform ─────────────────────────────────────────────
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+
+# ── Editores / IDE ────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+
+# ── Específico del agente / asistente ─────────────────────
+.claude/
+
+# ── Sistema operativo ─────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Misceláneo ────────────────────────────────────────────
+*.bak
+coverage/
