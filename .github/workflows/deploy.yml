@@ -12,6 +12,13 @@ name: Deploy to ECS Fargate
 on:
   push:
     branches: [main]
+  # Permite lanzar el redeploy a mano desde la pestaña Actions de GitHub.
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Tag adicional (además del SHA y latest). Opcional."
+        required: false
+        default: ""
 
 env:
   AWS_REGION: us-east-1
@@ -45,6 +52,13 @@ jobs:
           docker build -t $IMAGE_URI:$IMAGE_TAG -t $IMAGE_URI:latest .
           docker push $IMAGE_URI:$IMAGE_TAG
           docker push $IMAGE_URI:latest
+
+          # Tag adicional opcional desde workflow_dispatch (ej. "v1.2.0")
+          EXTRA_TAG="${{ github.event.inputs.image_tag }}"
+          if [ -n "$EXTRA_TAG" ]; then
+            docker tag $IMAGE_URI:$IMAGE_TAG $IMAGE_URI:$EXTRA_TAG
+            docker push $IMAGE_URI:$EXTRA_TAG
+          fi
 
           echo "IMAGE_URI=$IMAGE_URI:$IMAGE_TAG" >> $GITHUB_ENV
 
