@@ -96,6 +96,28 @@ async function main() {
     ok("list_pokemon(5)", r.content[0].text);
   } catch (e) { fail("list_pokemon", e); }
 
+  // ── Tools calculadas (orquestan varias llamadas a PokeAPI) ───────────────
+  try {
+    const r = await client.callTool({ name: "calculate_damage", arguments: {
+      attacker: "charizard", defender: "venusaur", move: "flamethrower", level: 50
+    }});
+    ok("calculate_damage(charizard→venusaur, flamethrower)", r.content[0].text);
+  } catch (e) { fail("calculate_damage", e); }
+
+  try {
+    const r = await client.callTool({ name: "suggest_counters", arguments: {
+      target: "dragonite", candidates: ["weavile", "togekiss", "garchomp", "magnezone"], limit: 3
+    }});
+    ok("suggest_counters(dragonite)", r.content[0].text);
+  } catch (e) { fail("suggest_counters", e); }
+
+  try {
+    const r = await client.callTool({ name: "type_coverage", arguments: {
+      team: ["charizard", "blastoise", "venusaur", "pikachu"]
+    }});
+    ok("type_coverage(team de 4)", r.content[0].text);
+  } catch (e) { fail("type_coverage", e); }
+
   // ── 3. Resources ──────────────────────────────────────────────────────────
   section("3 · Resources");
 
